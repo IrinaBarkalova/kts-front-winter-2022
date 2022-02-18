@@ -1,0 +1,11 @@
+.Repo-Cards{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.full-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
