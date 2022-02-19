@@ -1,34 +1,21 @@
 import * as React from "react";
 
-import "@styles/RepoCard.css";
+import "@styles/BranchCard.css";
 import { GithubRepoBranchesModel } from "@store/models/github";
-import { Card } from "antd";
+import { Collapse } from "antd";
 
 type Props = {
   branch: GithubRepoBranchesModel;
 };
+const { Panel } = Collapse;
 
 const BranchCard: React.FC<Props> = ({ branch }: Props) => {
   return (
-    <div className="Card-block">
-      <Card.Meta
-        title={branch?.name}
-        description={
-          <>
-            <a
-              key="go"
-              href={branch.commit.htmlUrl}
-              target="_blank"
-              className="repo-href"
-              rel="noreferrer"
-            >
-              {branch.protected}
-            </a>
-            <br />
-          </>
-        }
-      />
-    </div>
+    <Collapse accordion>
+      <Panel header={branch.name} key="1" className="branch-card">
+        <a href={branch.commit.htmlUrl}>{branch.commit.htmlUrl}</a>
+      </Panel>
+    </Collapse>
   );
 };
 
