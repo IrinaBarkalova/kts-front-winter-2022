@@ -4,15 +4,15 @@ import "@styles/RepoCard.css";
 import AvatarIcon from "@components/AvatarIcon";
 import StarIcon from "@components/StarIcon";
 import GitHubStore from "@store/GitHubStore";
-import { GithubRepoModel } from "@store/models/github";
+import { GithubRepoBranchesModel, GithubRepoModel } from "@store/models/github";
 import { normalizeCollection } from "@utils/collection";
 import { formatDate } from "@utils/formatDate";
 import { Card } from "antd";
 
 type Props = {
   item: GithubRepoModel;
-  setBranches: any;
-  showDrawer: any;
+  setBranches: React.Dispatch<React.SetStateAction<GithubRepoBranchesModel[]>>;
+  showDrawer: () => void;
 };
 
 const RepoTile: React.FC<Props> = ({
@@ -30,12 +30,11 @@ const RepoTile: React.FC<Props> = ({
         repo: item.name,
       })
       .then((result) => {
-        // console.log(result);
         setBranches(normalizeCollection(result.data));
       });
   };
   return (
-    <div onClick={handleClick} className="Card-block">
+    <div onClick={handleClick} className="card-block">
       <Card.Meta
         avatar={
           <AvatarIcon className="avatar-icon" src={item?.owner?.avatarUrl} />
@@ -45,7 +44,6 @@ const RepoTile: React.FC<Props> = ({
           item && (
             <>
               <a
-                key="go"
                 href={item.htmlUrl}
                 target="_blank"
                 className="repo-href"

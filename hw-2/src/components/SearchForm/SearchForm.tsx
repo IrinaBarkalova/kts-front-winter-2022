@@ -5,12 +5,13 @@ import { useState } from "react";
 import "@styles/Input.css";
 import SearchButton from "@components/SearchButton";
 import SearchIcon from "@components/SearchIcon";
+import SearchInput from "@components/SearchInput";
 import GitHubStore from "@store/GitHubStore";
+import { GithubRepoModel } from "@store/models/github";
 import { normalizeCollection } from "@utils/collection";
-import { Input } from "antd";
 
 type Props = {
-  setRepos: any;
+  setRepos: React.Dispatch<React.SetStateAction<GithubRepoModel[]>>;
 };
 const SearchForm: React.FC<Props> = ({ setRepos }: Props) => {
   const [value, setValue] = useState("");
@@ -29,13 +30,13 @@ const SearchForm: React.FC<Props> = ({ setRepos }: Props) => {
   };
   return (
     <div className="search-form">
-      <Input
+      <SearchInput
         className="search-form__input"
         value={value}
         placeholder="Введите название организации"
         onChange={(event) => setValue(event.target.value)}
       />
-      <SearchButton className="search-form__btn" changed={handleClick}>
+      <SearchButton className="search-form__btn" changeFun={handleClick}>
         <SearchIcon color="#fff" />
       </SearchButton>
     </div>

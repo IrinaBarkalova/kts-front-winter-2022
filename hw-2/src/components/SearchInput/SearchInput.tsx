@@ -2,15 +2,15 @@ import * as React from "react";
 
 type Props = {
   className: string;
-  value: string | number | readonly string[] | undefined;
-  changed: any;
+  value?: string | number | readonly string[];
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
   placeholder: string;
 };
 
 const SearchInput: React.FC<Props> = ({
   className,
   value,
-  changed,
+  onChange,
   placeholder,
 }: Props) => {
   return (
@@ -19,7 +19,7 @@ const SearchInput: React.FC<Props> = ({
       className={className}
       placeholder={placeholder}
       value={value}
-      onChange={changed}
+      onChange={onChange}
     />
   );
 };

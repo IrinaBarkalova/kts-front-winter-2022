@@ -12,7 +12,7 @@ const CardBlock: React.FC<Props> = ({ children }: Props) => {
     <div className="layout">
       <div className="layout__content">
         <Space direction="vertical">
-          <div className="Card-block">{children}</div>
+          <div className="card-block">{children}</div>
         </Space>
       </div>
     </div>

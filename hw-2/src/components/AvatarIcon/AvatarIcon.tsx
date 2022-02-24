@@ -9,4 +9,4 @@ const AvatarIcon: React.FC<Props> = ({ className, src }: Props) => {
   return <img className={className} src={src} alt="" />;
 };
 
-export default AvatarIcon;
+export default React.memo(AvatarIcon);

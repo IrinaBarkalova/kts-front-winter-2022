@@ -19,4 +19,4 @@ const SearchIcon: React.FC<Props> = ({ color }) => {
   );
 };
 
-export default SearchIcon;
+export default React.memo(SearchIcon);

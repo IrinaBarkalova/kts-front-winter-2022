@@ -3,18 +3,18 @@ import * as React from "react";
 type Props = {
   children: React.ReactNode;
   className: string;
-  changed: any;
+  changeFun?: React.MouseEventHandler<HTMLButtonElement>;
 };
 const SearchButton: React.FC<Props> = ({
   children,
-  changed,
+  changeFun,
   className,
 }: Props) => {
   return (
-    <button onClick={changed} className={className}>
+    <button onClick={changeFun} className={className}>
       {children}
     </button>
   );
 };
 
-export default SearchButton;
+export default React.memo(SearchButton);
