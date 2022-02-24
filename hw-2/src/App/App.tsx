@@ -1,14 +1,9 @@
-import "@styles/App.css";
-
 import * as React from "react";
 
-import BranchCard from "@components/BranchCard";
-import CardBlock from "@components/Layouts";
-import RepoCard from "@components/RepoCard";
-import SearchForm from "@components/SearchForm";
 import { GithubRepoBranchesModel, GithubRepoModel } from "@store/models/github";
-import { Space, Drawer } from "antd";
-import "@styles/RepoCard.css";
+
+import RepoBranchesDrawer from "../RepoBranchesDrawer";
+import ReposSearchPage from "../ReposSearchPage";
 
 const App: React.FC = () => {
   const [branches, setBranches] = React.useState<GithubRepoBranchesModel[]>([]);
@@ -17,38 +12,19 @@ const App: React.FC = () => {
   const showDrawer = () => {
     setVisible(true);
   };
-  const onClose = () => {
-    setVisible(false);
-  };
   return (
-    <div className="full-card">
-      <SearchForm setRepos={setRepos} />
-      <div className="repo-cards">
-        <CardBlock>
-          <Space direction="vertical">
-            {repos.map((repo) => (
-              <RepoCard
-                showDrawer={showDrawer}
-                setBranches={setBranches}
-                key={repo.id}
-                item={repo}
-              />
-            ))}
-          </Space>
-        </CardBlock>
-      </div>
-      <Drawer
-        title="Branches"
-        placement="right"
-        onClose={onClose}
+    <div className="all=page">
+      <ReposSearchPage
+        repos={repos}
+        setRepos={setRepos}
+        setBranches={setBranches}
+        showDrawer={showDrawer}
+      />
+      <RepoBranchesDrawer
+        setVisible={setVisible}
         visible={visible}
-      >
-        <Space direction="vertical">
-          {branches.map((branch) => (
-            <BranchCard key={branch.commit.shaCode} branch={branch} />
-          ))}
-        </Space>
-      </Drawer>
+        branches={branches}
+      />
     </div>
   );
 };
