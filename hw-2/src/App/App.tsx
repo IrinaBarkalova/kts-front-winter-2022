@@ -45,7 +45,7 @@ const App: React.FC = () => {
       >
         <Space direction="vertical">
           {branches.map((branch) => (
-            <BranchCard branch={branch} />
+            <BranchCard key={branch.commit.shaCode} branch={branch} />
           ))}
         </Space>
       </Drawer>
