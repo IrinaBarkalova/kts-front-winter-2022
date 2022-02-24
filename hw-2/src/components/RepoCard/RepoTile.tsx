@@ -1,21 +1,22 @@
 import * as React from "react";
 
 import "@styles/RepoCard.css";
-import favStar from "@components/img/StarIcon.png";
+import AvatarIcon from "@components/AvatarIcon";
+import StarIcon from "@components/StarIcon";
 import GitHubStore from "@store/GitHubStore";
 import { GithubRepoModel } from "@store/models/github";
 import { normalizeCollection } from "@utils/collection";
-import { formatDateDDMMYYYY } from "@utils/formatDateDDMMYYYY";
-import { Card, Avatar } from "antd";
+import { formatDate } from "@utils/formatDate";
+import { Card } from "antd";
 
 type Props = {
-  repo: GithubRepoModel;
+  item: GithubRepoModel;
   setBranches: any;
   showDrawer: any;
 };
 
-const RepoCard: React.FC<Props> = ({
-  repo,
+const RepoTile: React.FC<Props> = ({
+  item,
   setBranches,
   showDrawer,
 }: Props) => {
@@ -25,12 +26,11 @@ const RepoCard: React.FC<Props> = ({
     showDrawer();
     gitHubStore
       .getOrgBranchesList({
-        owner: repo.owner.login,
-        repo: repo.name,
+        owner: item.owner.login,
+        repo: item.name,
       })
       .then((result) => {
-        // eslint-disable-next-line no-console
-        console.log(result);
+        // console.log(result);
         setBranches(normalizeCollection(result.data));
       });
   };
@@ -38,30 +38,26 @@ const RepoCard: React.FC<Props> = ({
     <div onClick={handleClick} className="Card-block">
       <Card.Meta
         avatar={
-          <Avatar
-            className="avatar-icon"
-            size={67}
-            src={repo?.owner?.avatarUrl}
-          />
+          <AvatarIcon className="avatar-icon" src={item?.owner?.avatarUrl} />
         }
-        title={repo?.name}
+        title={item?.name}
         description={
-          repo && (
+          item && (
             <>
               <a
                 key="go"
-                href={repo.htmlUrl}
+                href={item.htmlUrl}
                 target="_blank"
                 className="repo-href"
                 rel="noreferrer"
               >
-                {repo.description}
+                {item.description}
               </a>
               <br />
               <div className="starNum-Data">
-                <img className="starNum_img" src={favStar} alt="" />
-                <p className="starNum"> {repo.stargazersCount}</p>
-                {formatDateDDMMYYYY(repo.updatedAt)}
+                <StarIcon color="none" />
+                <p className="starNum"> {item.stargazersCount}</p>
+                {formatDate(item.updatedAt)}
               </div>
             </>
           )
@@ -71,4 +67,4 @@ const RepoCard: React.FC<Props> = ({
   );
 };
 
-export default React.memo(RepoCard);
+export default React.memo(RepoTile);

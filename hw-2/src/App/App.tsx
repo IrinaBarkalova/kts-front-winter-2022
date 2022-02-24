@@ -5,12 +5,10 @@ import * as React from "react";
 import BranchCard from "@components/BranchCard";
 import CardBlock from "@components/Layouts";
 import RepoCard from "@components/RepoCard";
+import SearchForm from "@components/SearchForm";
 import { GithubRepoBranchesModel, GithubRepoModel } from "@store/models/github";
 import { Space, Drawer } from "antd";
-import "@styles/Input.css";
 import "@styles/RepoCard.css";
-
-import SearchForm from "./Pages/SearchForm";
 
 const App: React.FC = () => {
   const [branches, setBranches] = React.useState<GithubRepoBranchesModel[]>([]);
@@ -25,7 +23,7 @@ const App: React.FC = () => {
   return (
     <div className="full-card">
       <SearchForm setRepos={setRepos} />
-      <div className="Repo-Cards">
+      <div className="repo-cards">
         <CardBlock>
           <Space direction="vertical">
             {repos.map((repo) => (
@@ -33,7 +31,7 @@ const App: React.FC = () => {
                 showDrawer={showDrawer}
                 setBranches={setBranches}
                 key={repo.id}
-                repo={repo}
+                item={repo}
               />
             ))}
           </Space>

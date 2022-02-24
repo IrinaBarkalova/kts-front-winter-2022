@@ -3,9 +3,11 @@ import * as React from "react";
 import { useState } from "react";
 
 import "@styles/Input.css";
-import searchBtn from "@components/img/SearchIcon.png";
+import SearchButton from "@components/SearchButton";
+import SearchIcon from "@components/SearchIcon";
 import GitHubStore from "@store/GitHubStore";
 import { normalizeCollection } from "@utils/collection";
+import { Input } from "antd";
 
 type Props = {
   setRepos: any;
@@ -27,18 +29,17 @@ const SearchForm: React.FC<Props> = ({ setRepos }: Props) => {
   };
   return (
     <div className="search-form">
-      <input
-        type="text"
+      <Input
         className="search-form__input"
-        placeholder={"Введите название организации"}
         value={value}
+        placeholder="Введите название организации"
         onChange={(event) => setValue(event.target.value)}
       />
-      <button onClick={handleClick} className="search-form__btn">
-        <img src={searchBtn} alt="" className="search-form__btn__img" />
-      </button>
+      <SearchButton className="search-form__btn" changed={handleClick}>
+        <SearchIcon color="#fff" />
+      </SearchButton>
     </div>
   );
 };
 
-export default SearchForm;
+export default React.memo(SearchForm);

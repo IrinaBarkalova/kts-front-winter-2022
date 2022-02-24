@@ -31,7 +31,7 @@ export type GithubRepoModel = {
   owner: GithubOwnerModel;
 };
 export type GithubCommitModel = {
-  sha_code: string;
+  shaCode: string;
   htmlUrl: string;
 };
 export type GithubCommitApiModel = {
@@ -42,7 +42,7 @@ export type GithubCommitApiModel = {
 export const normalizeGithubCommitModel = (
   raw: GithubCommitApiModel
 ): GithubCommitModel => ({
-  sha_code: raw.sha,
+  shaCode: raw.sha,
   htmlUrl: raw.url,
 });
 export type GithubRepoBranchesModel = {

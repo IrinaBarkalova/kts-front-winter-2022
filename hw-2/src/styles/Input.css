@@ -7,7 +7,7 @@
 
 }
 .search-form{
-display: flex;
+    display: flex;
     flex-direction: row;
     justify-content: center;
     margin-top: 20px;
@@ -43,8 +43,4 @@ display: flex;
 }
 .search-form__btn:disabled{
     background: var(--main-border-color);
-}
-.search-form__btn__img{
-    height: 17px;
-    width: 17px;
 }
