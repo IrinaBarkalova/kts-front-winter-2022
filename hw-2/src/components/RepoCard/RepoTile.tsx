@@ -1,6 +1,7 @@
 import * as React from "react";
+import "@styles/RepoTile.css";
+import { useCallback } from "react";
 
-import "@styles/RepoCard.css";
 import AvatarIcon from "@components/AvatarIcon";
 import StarIcon from "@components/StarIcon";
 import GitHubStore from "@store/GitHubStore";
@@ -12,18 +13,18 @@ import { Card } from "antd";
 type Props = {
   item: GithubRepoModel;
   setBranches: React.Dispatch<React.SetStateAction<GithubRepoBranchesModel[]>>;
-  showDrawer: () => void;
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const RepoTile: React.FC<Props> = ({
   item,
   setBranches,
-  showDrawer,
+  setVisible,
 }: Props) => {
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     const gitHubStore = new GitHubStore();
     setBranches([]);
-    showDrawer();
+    setVisible(true);
     gitHubStore
       .getOrgBranchesList({
         owner: item.owner.login,
@@ -32,7 +33,7 @@ const RepoTile: React.FC<Props> = ({
       .then((result) => {
         setBranches(normalizeCollection(result.data));
       });
-  };
+  }, []);
   return (
     <div onClick={handleClick} className="card-block">
       <Card.Meta

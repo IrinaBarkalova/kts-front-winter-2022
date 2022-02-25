@@ -9,26 +9,26 @@ import { Space } from "antd";
 type Props = {
   setRepos: React.Dispatch<React.SetStateAction<GithubRepoModel[]>>;
   repos: GithubRepoModel[];
-  showDrawer: () => void;
   setBranches: React.Dispatch<React.SetStateAction<GithubRepoBranchesModel[]>>;
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const ReposSearchPage: React.FC<Props> = ({
   setRepos,
   repos,
-  showDrawer,
+  setVisible,
   setBranches,
 }: Props) => {
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [status, setIsLoading] = React.useState(false);
   return (
-    <div className="search-page">
-      <SearchForm setRepos={setRepos} />
+    <>
+      <SearchForm setRepos={setRepos} isLoading={setIsLoading} />
       <div className="repo-cards">
         <CardBlock>
           <Space direction="vertical">
             {repos.map((repo) => (
               <RepoTile
-                showDrawer={showDrawer}
+                setVisible={setVisible}
                 setBranches={setBranches}
                 key={repo.id}
                 item={repo}
@@ -37,7 +37,7 @@ const ReposSearchPage: React.FC<Props> = ({
           </Space>
         </CardBlock>
       </div>
-    </div>
+    </>
   );
 };
 

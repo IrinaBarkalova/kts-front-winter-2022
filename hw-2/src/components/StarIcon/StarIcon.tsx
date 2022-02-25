@@ -1,5 +1,5 @@
 import * as React from "react";
-import "@styles/RepoCard.css";
+import "@styles/RepoTile.css";
 type Props = {
   color: string;
 };

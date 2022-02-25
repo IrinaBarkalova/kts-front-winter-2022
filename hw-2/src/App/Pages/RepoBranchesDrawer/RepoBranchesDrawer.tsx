@@ -1,14 +1,12 @@
-import "@styles/App.css";
-
 import * as React from "react";
 
 import BranchCard from "@components/BranchCard";
 import { GithubRepoBranchesModel } from "@store/models/github";
 import { Space, Drawer } from "antd";
-import "@styles/RepoCard.css";
+import "@styles/RepoTile.css";
 
 type Props = {
-  setVisible: any;
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
   visible: boolean;
   branches: GithubRepoBranchesModel[];
 };
@@ -22,7 +20,7 @@ const RepoBranchesDrawer: React.FC<Props> = ({
     setVisible(false);
   };
   return (
-    <div className="branch-drawer">
+    <>
       <Drawer
         title="Branches"
         placement="right"
@@ -35,7 +33,7 @@ const RepoBranchesDrawer: React.FC<Props> = ({
           ))}
         </Space>
       </Drawer>
-    </div>
+    </>
   );
 };
 
