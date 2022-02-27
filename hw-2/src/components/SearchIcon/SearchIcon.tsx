@@ -2,7 +2,7 @@ import * as React from "react";
 type Props = {
   color: string;
 };
-const SearchIcon: React.FC<Props> = ({ color }) => {
+const SearchIcon: React.FC<Props> = ({ color }: Props) => {
   return (
     <svg
       width="18"

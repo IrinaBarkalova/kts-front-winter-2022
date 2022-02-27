@@ -16,7 +16,9 @@ export default class ApiStore implements IApiStore {
     params: RequestParams<ReqT>
   ): Promise<ApiResponse<CollectionT<number, GithubRepoModel>>> {
     let query =
-      params.method === HTTPMethod.GET ? "?" + qs.stringify(params.data) : "";
+      params.method === HTTPMethod.GET
+        ? "?" + qs.stringify(params.params) + qs.stringify(params.data)
+        : "";
     let req: RequestInit = {};
     if (params.method === HTTPMethod.POST) {
       req.body = JSON.stringify(params.data);

@@ -1,9 +1,8 @@
 import * as React from "react";
 
+import RepoBranchesDrawer from "@pages/RepoBranchesDrawer";
+import ReposSearchPage from "@pages/ReposSearchPage";
 import { GithubRepoBranchesModel, GithubRepoModel } from "@store/models/github";
-
-import RepoBranchesDrawer from "./Pages/RepoBranchesDrawer";
-import ReposSearchPage from "./Pages/ReposSearchPage";
 
 const App: React.FC = () => {
   const [branches, setBranches] = React.useState<GithubRepoBranchesModel[]>([]);
