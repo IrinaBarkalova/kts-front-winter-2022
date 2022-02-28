@@ -3,27 +3,19 @@ import * as React from "react";
 import { useReposContext } from "@App/App";
 import CardBlock from "@components/Layouts";
 import RepoTile from "@components/RepoCard/RepoTile";
-import { GithubRepoBranchesModel } from "@store/models/github";
 import { Space } from "antd";
+import { Link } from "react-router-dom";
 
-type Props = {
-  setBranches: React.Dispatch<React.SetStateAction<GithubRepoBranchesModel[]>>;
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
-};
-
-const Repos: React.FC<Props> = ({ setVisible, setBranches }: Props) => {
+const Repos: React.FC = () => {
   const RepoContext = useReposContext();
   return (
     <div className="repo-cards">
       <CardBlock>
         <Space direction="vertical">
           {RepoContext.repos.map((repo) => (
-            <RepoTile
-              setVisible={setVisible}
-              setBranches={setBranches}
-              key={repo.id}
-              item={repo}
-            />
+            <Link to={`/repos/${repo.owner.login}/${repo.name}`}>
+              <RepoTile key={repo.id} item={repo} />
+            </Link>
           ))}
         </Space>
       </CardBlock>

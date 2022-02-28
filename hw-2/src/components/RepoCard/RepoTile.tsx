@@ -31,6 +31,8 @@ const RepoTile: React.FC<Props> = ({
         repo: item.name,
       })
       .then((result) => {
+        // eslint-disable-next-line no-console
+        console.log(result.data);
         setBranches(normalizeCollection(result.data));
       });
   }, []);

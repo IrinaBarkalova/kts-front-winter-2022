@@ -1,0 +1,10 @@
+@import "variables";
+
+.branches-page{
+    @include flex(column, center);
+    margin-top: 20px;
+}
+.branch-card{
+    @include square(auto);
+    margin-right: 10px;
+}
