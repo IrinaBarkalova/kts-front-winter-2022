@@ -4,15 +4,10 @@ import { useEffect, useState } from "react";
 import { useReposContext } from "@App/App";
 import BranchCard from "@components/BranchCard";
 import { GithubRepoBranchesModel } from "@store/models/github";
+import styles from "@styles/BranchCard.module.scss";
 import { normalizeCollection } from "@utils/collection";
 import { Space, Modal } from "antd";
-import "@styles/RepoTile.scss";
 import { useParams } from "react-router-dom";
-
-// type Props = {
-//   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
-//   visible: boolean;
-// };
 
 const RepoBranchesDrawer: React.FC = () => {
   const [branches, setBranches] = useState<GithubRepoBranchesModel[]>([]);
@@ -34,7 +29,7 @@ const RepoBranchesDrawer: React.FC = () => {
       setBranches(normalizeCollection(result.data));
     });
     RepoContext.load(owner, repo);
-  }, [owner, repo]);
+  }, [owner, repo, RepoContext]);
   return (
     <Modal
       title="Basic Modal"
@@ -43,7 +38,7 @@ const RepoBranchesDrawer: React.FC = () => {
       onOk={handleOk}
       onCancel={handleCancel}
     >
-      <Space className="branches-page" direction="vertical">
+      <Space className={styles.branches_page} direction="vertical">
         {branches.map((branch) => (
           <BranchCard key={branch.commit.shaCode} branch={branch} />
         ))}

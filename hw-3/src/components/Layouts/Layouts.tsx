@@ -1,7 +1,7 @@
 import * as React from "react";
 
+import styles from "@styles/Layout.module.scss";
 import { Space } from "antd";
-import "@styles/Layout.scss";
 
 type Props = {
   children: React.ReactNode;
@@ -9,10 +9,10 @@ type Props = {
 
 const CardBlock: React.FC<Props> = ({ children }: Props) => {
   return (
-    <div className="layout">
-      <div className="layout__content">
+    <div className={styles.layout}>
+      <div className={styles.layout__content}>
         <Space direction="vertical">
-          <div className="card-block">{children}</div>
+          <div className={styles.card_block}>{children}</div>
         </Space>
       </div>
     </div>

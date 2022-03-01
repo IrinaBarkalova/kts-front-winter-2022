@@ -1,19 +1,19 @@
 @import "variables";
 
-.repo-cards{
+.repoCards{
     @include flex(none, center);
     //display: flex;
     //justify-content: center;
     align-content: center;
 }
-.full-form{
+.fullForm{
     @include flex(column, center);
     //display: flex;
     //flex-direction: column;
     //justify-content: center;
 
 }
-.search-form{
+.searchForm{
     @include flex(row, center);
     margin-top: 20px;
     &__btn{
@@ -35,17 +35,18 @@
     cursor: pointer;
     }
 }
-.search-form__input:hover{
+
+.searchForm__input:hover{
     border: 1px solid $--main-serch-btn-input-color;
 }
-.search-form__input:disabled{
+.searchForm__input:disabled{
     background: $--serch-input-disable-color;
     border: 1px solid $--main-border-color;
 }
 
-.search-form__btn:hover{
+.searchForm__btn:hover{
     background: $--serch-input-hover-color;
 }
-.search-form__btn:disabled{
+.searchForm__btn:disabled{
     background: $--main-border-color;
 }

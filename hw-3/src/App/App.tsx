@@ -4,8 +4,8 @@ import { createContext, Dispatch, SetStateAction, useContext } from "react";
 import Repos from "@components/Repos";
 import SearchForm from "@components/SearchForm";
 import RepoBranchesDrawer from "@pages/RepoBranchesDrawer";
-import { load } from "@store/GithubBrunchesReq/load";
-import { GithubRepoBranchesModel, GithubRepoModel } from "@store/models/github";
+import { load } from "@store/GithubBrunchesLoader/load";
+import { GithubRepoModel } from "@store/models/github";
 import { ApiResp } from "@utils/apiTypes";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 

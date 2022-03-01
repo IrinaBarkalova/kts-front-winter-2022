@@ -1,0 +1,26 @@
+@import "variables";
+.layout {
+    min-height: 100%;
+    width: 600px ;
+
+  &__content{
+    display: flex;
+    align-content: center;
+    justify-items: center;
+  }
+}
+.card_block{
+  @include square(auto);
+  background: $--main-bg-color;
+  border: 1px solid $--main-border-color;
+  border-radius: 6px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.card_block:hover{
+  box-shadow: 0 2px 6px $--repo-href-color;
+}
+

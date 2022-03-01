@@ -1,11 +1,12 @@
 import * as React from "react";
-import "@styles/RepoTile.scss";
+
+import styles from "@styles/RepoTile.module.scss";
 type Props = {
   color: string;
 };
 const StarIcon: React.FC<Props> = ({ color }) => {
   return (
-    <div className="starNum_img">
+    <div className={styles.starNum_img}>
       <svg
         width="14"
         height="13"

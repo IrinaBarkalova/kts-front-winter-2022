@@ -1,10 +1,9 @@
 @import "variables";
 
-.branches-page{
+.branches_page{
     @include flex(column, center);
-    margin-top: 20px;
 }
-.branch-card{
+.branch_card{
     @include square(auto);
     margin-right: 10px;
 }

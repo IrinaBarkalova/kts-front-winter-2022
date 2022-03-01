@@ -1,6 +1,6 @@
-@import "./variables";
+@import "variables";
 
-.repo-href{
+.repoHref{
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
@@ -8,11 +8,11 @@
     color: $--repo-href-color;
     margin-bottom: 4px;
 }
-.repo-href:hover{
+.repoHref:hover{
     color: $--repo-href-hover-color;
 }
 
-.card-block{
+.card_block{
     @include square(auto);
     background: $--main-bg-color;
     border: 1px solid $--main-border-color;
@@ -23,11 +23,11 @@
     margin-left: 20px;
     margin-right: 20px;
 }
-.card-block:hover{
+.card_block:hover{
     box-shadow: 0 2px 6px $--repo-href-color;
 }
 
-.avatar-icon{
+.avatarIcon{
     width: 80px;
     border-radius: 50%;
     margin-left: 11px;
@@ -40,7 +40,7 @@
         margin-top: 1px;
         margin-right: 4px;
     }
-    &-data{
+    &_data{
         @include flex(row, none);
     }
 }
