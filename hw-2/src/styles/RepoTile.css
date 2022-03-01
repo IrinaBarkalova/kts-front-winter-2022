@@ -1,0 +1,53 @@
+:root{
+    --repo-href-color:#7E7E7E;
+    --repo-href-hover-color: #208FBF;
+    --main-bg-color:#FFFFFF;
+    --main-border-color:#D9D9D9;
+}
+.repo-href{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--repo-href-color);
+    margin-bottom: 4px;
+}
+.repo-href:hover{
+    color: var(--repo-href-hover-color);
+}
+
+.card-block{
+    width: auto;
+    height: auto;
+    background: var(--main-bg-color);
+    border: 1px solid var(--main-border-color);
+    border-radius: 6px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.card-block:hover{
+    box-shadow: 0 2px 6px var(--repo-href-color);
+}
+
+.avatar-icon{
+    width: 80px;
+    border-radius: 50%;
+    margin-left: 11px;
+    margin-top: 4px;
+}
+
+.starNum_img{
+    margin-top: 1px;
+    margin-right: 4px;
+
+}
+.starNum{
+    margin-right: 20px;
+}
+.starNum-Data{
+    display: flex;
+    flex-direction: row;
+}
