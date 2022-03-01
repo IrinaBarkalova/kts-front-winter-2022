@@ -24,7 +24,7 @@ const RepoTile: React.FC<Props> = ({ item }: Props) => {
         title={item?.name}
         description={
           item && (
-            <>
+            <React.Fragment>
               <a
                 href={item.htmlUrl}
                 target="_blank"
@@ -39,7 +39,7 @@ const RepoTile: React.FC<Props> = ({ item }: Props) => {
                 <p className={styles.starNum}> {item.stargazersCount}</p>
                 {formatDate(item.updatedAt)}
               </div>
-            </>
+            </React.Fragment>
           )
         }
       />

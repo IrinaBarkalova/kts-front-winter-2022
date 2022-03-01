@@ -2,16 +2,10 @@
 
 .repoCards{
     @include flex(none, center);
-    //display: flex;
-    //justify-content: center;
     align-content: center;
 }
 .fullForm{
     @include flex(column, center);
-    //display: flex;
-    //flex-direction: column;
-    //justify-content: center;
-
 }
 .searchForm{
     @include flex(row, center);

@@ -7,12 +7,13 @@ import {
 import { CollectionT } from "@utils/collection";
 
 export type GetOrganizationReposListParams = {
-  organizationName: string | undefined;
+  organizationName?: string;
+  page: number;
 };
 
 export type GetOrgBranchesParams = {
-  owner: string | undefined;
-  repo: string | undefined;
+  owner?: string;
+  repo?: string;
 };
 
 export type ApiResp<T> = {

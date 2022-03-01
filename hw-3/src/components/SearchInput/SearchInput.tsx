@@ -2,7 +2,7 @@ import * as React from "react";
 
 type Props = {
   className: string;
-  value?: string | number | readonly string[];
+  value?: string | number;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   placeholder: string;
 };

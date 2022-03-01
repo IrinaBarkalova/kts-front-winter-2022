@@ -11,6 +11,8 @@ import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
 interface ContextType {
   repos: GithubRepoModel[];
+  inputStr: string;
+  setInputStr: React.Dispatch<React.SetStateAction<string>>;
   setRepos: Dispatch<SetStateAction<GithubRepoModel[]>>;
   isLoading: boolean;
   load: (owner: string, repo: string) => Promise<ApiResp>;
@@ -22,9 +24,13 @@ const Provider = ReposContext.Provider;
 
 const App: React.FC = () => {
   const [repos, setRepos] = React.useState<GithubRepoModel[]>([]);
+  const [inputStr, setInputStr] = React.useState("");
+
   const isLoading: boolean = false;
   return (
-    <Provider value={{ repos, isLoading, setRepos, load }}>
+    <Provider
+      value={{ repos, isLoading, setRepos, load, inputStr, setInputStr }}
+    >
       <BrowserRouter>
         <Switch>
           <Route exact path="/">

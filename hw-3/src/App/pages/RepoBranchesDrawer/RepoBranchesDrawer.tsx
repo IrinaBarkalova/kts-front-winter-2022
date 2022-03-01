@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
 
 import { useReposContext } from "@App/App";
 import BranchCard from "@components/BranchCard";
@@ -10,20 +9,20 @@ import { Space, Modal } from "antd";
 import { useParams } from "react-router-dom";
 
 const RepoBranchesDrawer: React.FC = () => {
-  const [branches, setBranches] = useState<GithubRepoBranchesModel[]>([]);
+  const [branches, setBranches] = React.useState<GithubRepoBranchesModel[]>([]);
   const RepoContext = useReposContext();
   const { owner, repo } = useParams<{ owner: string; repo: string }>();
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = React.useState(false);
 
-  const handleOk = () => {
+  const handleOk = React.useCallback(() => {
     setIsModalVisible(false);
-  };
+  }, []);
 
-  const handleCancel = () => {
+  const handleCancel = React.useCallback(() => {
     setIsModalVisible(false);
-  };
+  }, []);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setIsModalVisible(true);
     RepoContext.load(owner, repo).then((result) => {
       setBranches(normalizeCollection(result.data));
