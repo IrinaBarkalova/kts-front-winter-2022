@@ -1,9 +1,9 @@
 import * as React from "react";
 
 import AvatarIcon from "@components/AvatarIcon";
+import styles from "@components/RepoTile/RepoTile.module.scss";
 import StarIcon from "@components/StarIcon";
 import { GithubRepoModel } from "@store/models/github";
-import styles from "@styles/RepoTile.module.scss";
 import { formatDate } from "@utils/formatDate";
 import { Card } from "antd";
 
@@ -17,7 +17,7 @@ const RepoTile: React.FC<Props> = ({ item }: Props) => {
       <Card.Meta
         avatar={
           <AvatarIcon
-            className={styles.avatarIcon}
+            className={styles.avatar__icon}
             src={item?.owner?.avatarUrl}
           />
         }
@@ -28,15 +28,15 @@ const RepoTile: React.FC<Props> = ({ item }: Props) => {
               <a
                 href={item.htmlUrl}
                 target="_blank"
-                className={styles.repoHref}
+                className={styles.repo_href}
                 rel="noreferrer"
               >
                 {item.description}
               </a>
               <br />
-              <div className={styles.starNum_data}>
+              <div className={styles.star_num_data}>
                 <StarIcon color="none" />
-                <p className={styles.starNum}> {item.stargazersCount}</p>
+                <p className={styles.star_num}> {item.stargazersCount}</p>
                 {formatDate(item.updatedAt)}
               </div>
             </React.Fragment>

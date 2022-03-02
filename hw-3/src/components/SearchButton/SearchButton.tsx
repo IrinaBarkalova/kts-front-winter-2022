@@ -12,21 +12,21 @@ type Props = {
 const SearchButton: React.FC<Props> = (
   props: React.PropsWithChildren<Props>
 ) => {
-  const RepoContext = useReposContext();
+  const repoContext = useReposContext();
   const handleClick = React.useCallback(() => {
     const gitHubStore = new GitHubStore();
-    RepoContext.setRepos([]);
-    RepoContext.isLoading = true;
+    repoContext.setRepos([]);
+    repoContext.isLoading = true;
     gitHubStore
       .getOrganizationReposList({
-        organizationName: RepoContext.inputStr,
+        organizationName: repoContext.inputStr,
         page: 1,
       })
       .then((result) => {
-        RepoContext.isLoading = false;
-        RepoContext.setRepos(normalizeCollection(result.data));
+        repoContext.isLoading = false;
+        repoContext.setRepos(normalizeCollection(result.data));
       });
-  }, [RepoContext]);
+  }, [repoContext]);
   return (
     <Link to="/repos">
       <button onClick={handleClick} className={props.className}>

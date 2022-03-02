@@ -28,7 +28,7 @@ export default class GitHubStore implements IGitHubStore {
         accept: "application/vnd.github.v3+json",
       },
       params: {
-        per_page: 20,
+        per_page: 8,
         page: params.page,
       },
       data: {},

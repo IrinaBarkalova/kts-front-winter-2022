@@ -1,4 +1,4 @@
-@import "variables";
+@import "../../styles/variables";
 
 .repoCards{
     @include flex(none, center);
@@ -7,7 +7,7 @@
 .fullForm{
     @include flex(column, center);
 }
-.searchForm{
+.search_form{
     @include flex(row, center);
     margin-top: 20px;
     &__btn{
@@ -30,17 +30,17 @@
     }
 }
 
-.searchForm__input:hover{
+.search_form__input:hover{
     border: 1px solid $--main-serch-btn-input-color;
 }
-.searchForm__input:disabled{
+.search_form__input:disabled{
     background: $--serch-input-disable-color;
     border: 1px solid $--main-border-color;
 }
 
-.searchForm__btn:hover{
+.search_form__btn:hover{
     background: $--serch-input-hover-color;
 }
-.searchForm__btn:disabled{
+.search_form__btn:disabled{
     background: $--main-border-color;
 }

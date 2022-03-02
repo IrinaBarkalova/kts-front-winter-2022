@@ -2,15 +2,15 @@ import * as React from "react";
 
 import { useReposContext } from "@App/App";
 import BranchCard from "@components/BranchCard";
+import styles from "@components/BranchCard/BranchCard.module.scss";
 import { GithubRepoBranchesModel } from "@store/models/github";
-import styles from "@styles/BranchCard.module.scss";
 import { normalizeCollection } from "@utils/collection";
 import { Space, Modal } from "antd";
 import { useParams } from "react-router-dom";
 
 const RepoBranchesDrawer: React.FC = () => {
   const [branches, setBranches] = React.useState<GithubRepoBranchesModel[]>([]);
-  const RepoContext = useReposContext();
+  const repoContext = useReposContext();
   const { owner, repo } = useParams<{ owner: string; repo: string }>();
   const [isModalVisible, setIsModalVisible] = React.useState(false);
 
@@ -24,11 +24,11 @@ const RepoBranchesDrawer: React.FC = () => {
 
   React.useEffect(() => {
     setIsModalVisible(true);
-    RepoContext.load(owner, repo).then((result) => {
+    repoContext.load(owner, repo).then((result) => {
       setBranches(normalizeCollection(result.data));
     });
-    RepoContext.load(owner, repo);
-  }, [owner, repo, RepoContext]);
+    repoContext.load(owner, repo);
+  }, [owner, repo, repoContext]);
   return (
     <Modal
       title="Basic Modal"
