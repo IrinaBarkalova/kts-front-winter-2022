@@ -1,0 +1,9 @@
+@import "src/styles/variables";
+
+.branches_page{
+    @include flex(column, center);
+}
+.branch_card{
+    @include square(auto);
+    margin-right: 10px;
+}

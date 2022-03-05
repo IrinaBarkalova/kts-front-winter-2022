@@ -1,0 +1,20 @@
+$--repo-href-color:#7E7E7E;
+$--repo-href-hover-color: #208FBF;
+$--main-bg-color:#FFFFFF;
+$--main-border-color:#D9D9D9;
+$--main-bg-color:#FFFFFF;
+$--main-border-color:#D9D9D9;
+$--main-serch-btn-input-color:#FF5555;
+$--serch-input-hover-color:#fa8888;
+$--serch-input-disable-color:#F9F9F9;
+
+@mixin square($size){
+  width: $size;
+  height: $size;
+}
+
+@mixin flex($direction: none, $j-cont: none){
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $j-cont;
+}
