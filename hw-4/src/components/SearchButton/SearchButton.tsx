@@ -13,7 +13,7 @@ const SearchButton: React.FC<Props> = (
   const repoContext = useReposContext();
   const handleClick = React.useCallback(() => {
     repoContext.gitHubStore.getOrganizationReposList({
-      organizationName: repoContext.inputStr,
+      organizationName: repoContext.gitHubStore.value,
       page: 1,
     });
   }, [repoContext]);

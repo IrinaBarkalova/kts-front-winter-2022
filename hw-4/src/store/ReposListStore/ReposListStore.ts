@@ -1,15 +1,16 @@
+import React from "react";
+
 import { HTTPMethod } from "@shared/store/ApiStore/types";
 import rootStore from "@shared/store/rootStore";
 import {
   GithubRepoApiModel,
   GithubRepoModel,
-  normalizeGithubRepoModel,
+  normalizeGithubReposToCollection,
 } from "@store/models/repos/reposModels";
 import {
   CollectionT,
   getInitialCollectionModel,
   linearizeCollection,
-  normalizeCollection,
 } from "@utils/collection";
 import { Meta } from "@utils/meta";
 import { ILocalStore } from "@utils/useLocalStore";
@@ -23,7 +24,7 @@ import {
 
 import { IGitHubStore, GetOrganizationReposListParams } from "./types";
 type PrivateFields = "_repos" | "_meta" | "_value";
-export default class GitHubStore implements IGitHubStore, ILocalStore {
+export default class ReposListStore implements IGitHubStore, ILocalStore {
   private apiStore = rootStore.api_store;
   private _repos: CollectionT<number, GithubRepoModel> =
     getInitialCollectionModel();
@@ -32,7 +33,7 @@ export default class GitHubStore implements IGitHubStore, ILocalStore {
 
   constructor() {
     this.handleChangeValue = this.handleChangeValue.bind(this);
-    makeObservable<GitHubStore, PrivateFields>(this, {
+    makeObservable<ReposListStore, PrivateFields>(this, {
       _repos: observable.ref,
       _meta: observable,
       _value: observable,
@@ -56,7 +57,7 @@ export default class GitHubStore implements IGitHubStore, ILocalStore {
     return this._value;
   }
 
-  handleChangeValue(event: any) {
+  handleChangeValue(event: React.ChangeEvent<HTMLInputElement>) {
     this._value = event.target.value;
   }
   async getOrganizationReposList(
@@ -79,15 +80,8 @@ export default class GitHubStore implements IGitHubStore, ILocalStore {
         this._meta = Meta.error;
       }
       try {
-        // TODO try normalizeCollectionT
-        // eslint-disable-next-line no-console
-        console.log(response.data);
-        const rep: GithubRepoModel[] = [];
-        for (const item of response.data) {
-          rep.push(normalizeGithubRepoModel(item));
-        }
         this._meta = Meta.success;
-        this._repos = normalizeCollection(rep, (RepoItem) => RepoItem.id);
+        this._repos = normalizeGithubReposToCollection(response.data);
         return;
       } catch (e) {
         // eslint-disable-next-line no-console

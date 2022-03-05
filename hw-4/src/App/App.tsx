@@ -4,19 +4,16 @@ import { createContext, useContext } from "react";
 import Repos from "@components/Repos";
 import SearchForm from "@components/SearchForm";
 import RepoBranchesDrawer from "@pages/RepoBranchesDrawer";
-import { load } from "@store/GithubBrunchesLoader/load";
 import { getNextRepos } from "@store/GitHubNewReposLoader/reposLoader";
-import GitHubStore from "@store/GitHubStore";
+import ReposBranchesStore from "@store/ReposBranchesStore";
+import ReposListStore from "@store/ReposListStore";
 import { ApiResp } from "@utils/apiTypes";
 import { useLocalStore } from "@utils/useLocalStore";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
 interface ContextType {
-  gitHubStore: GitHubStore;
-  inputStr: string;
-  setInputStr: React.Dispatch<React.SetStateAction<string>>;
-  isLoading: boolean;
-  load: (owner: string, repo: string) => Promise<ApiResp>;
+  gitHubStore: ReposListStore;
+  branchesStore: ReposBranchesStore;
   getNextRepos: (
     inputStr: string,
     page: number,
@@ -29,17 +26,14 @@ export const useReposContext = () => useContext(ReposContext);
 const Provider = ReposContext.Provider;
 
 const App: React.FC = () => {
-  const [inputStr, setInputStr] = React.useState("");
-  const gitHubStore = useLocalStore(() => new GitHubStore());
-  const isLoading: boolean = false;
+  const gitHubStore = useLocalStore(() => new ReposListStore());
+  const branchesStore = useLocalStore(() => new ReposBranchesStore());
+
   return (
     <Provider
       value={{
+        branchesStore,
         gitHubStore,
-        isLoading,
-        load,
-        inputStr,
-        setInputStr,
         getNextRepos,
       }}
     >

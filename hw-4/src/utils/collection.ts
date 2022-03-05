@@ -32,17 +32,3 @@ export const getInitialCollectionModel = (): CollectionT<any, any> => ({
 export const linearizeCollection = <Uid extends string | number, T>(
   elements: CollectionT<Uid, T>
 ): T[] => elements.order.map((el) => elements.entities[el]);
-
-export const normalizeCollection = <Uid extends string | number, T>(
-  elements: T[],
-  getKeyForElement: (element: T) => Uid
-): CollectionT<Uid, T> => {
-  const collection: CollectionT<Uid, T> = getInitialCollectionModel();
-
-  elements.forEach((el) => {
-    const id = getKeyForElement(el);
-    collection.order.push(id);
-    collection.entities[id] = el;
-  });
-  return collection;
-};

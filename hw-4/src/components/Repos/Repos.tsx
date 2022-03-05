@@ -16,13 +16,14 @@ import { Link } from "react-router-dom";
 const Repos: React.FC = () => {
   const repoContext = useReposContext();
   const [page, setPage] = React.useState(2);
-
   React.useEffect(() => {
-    repoContext.getNextRepos(repoContext.inputStr, page, 8).then((result) => {
-      repoContext.gitHubStore.repos.push(
-        ...normalizeReposCollection(result.data)
-      );
-    });
+    repoContext
+      .getNextRepos(repoContext.gitHubStore.value, page, 8)
+      .then((result) => {
+        repoContext.gitHubStore.repos.push(
+          ...normalizeReposCollection(result.data)
+        );
+      });
   }, [repoContext, page]);
 
   const nextPage = React.useCallback(() => {
@@ -35,7 +36,7 @@ const Repos: React.FC = () => {
         dataLength={repoContext.gitHubStore.repos.length}
         next={nextPage}
         hasMore={true}
-        loader={<Loader />}
+        loader={repoContext.gitHubStore.meta === Meta.loading && <Loader />}
         endMessage={<EndMessage />}
       >
         <CardBlock>

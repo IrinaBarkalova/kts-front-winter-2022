@@ -1,9 +1,8 @@
 import { GithubRepoModel } from "@store/models/repos";
 import { CollectionT } from "@utils/collection";
+import * as qs from "qs";
 
 import { ApiResponse, HTTPMethod, IApiStore, RequestParams } from "./types";
-
-let qs = require("qs");
 
 export default class ApiStore implements IApiStore {
   readonly baseUrl: string;
