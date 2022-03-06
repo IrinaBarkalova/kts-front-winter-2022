@@ -61,8 +61,6 @@ export default class ReposBranchesStore implements ILocalStore, IBranchesStore {
       try {
         this._meta = Meta.success;
         this._branches = normalizeOrgBranchesToCollection(response.data);
-        // eslint-disable-next-line no-console
-        console.log(this._branches);
         return;
       } catch (e) {
         // eslint-disable-next-line no-console
