@@ -5,20 +5,21 @@ import BranchCard from "@components/BranchCard";
 import styles from "@components/BranchCard/BranchCard.module.scss";
 import { Space, Modal } from "antd";
 import { observer } from "mobx-react-lite";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 const RepoBranchesDrawer: React.FC = () => {
   const repoContext = useReposContext();
   const { owner, repo } = useParams<{ owner: string; repo: string }>();
   const [isModalVisible, setIsModalVisible] = React.useState(false);
-
+  let history = useHistory();
   const handleOk = React.useCallback(() => {
     setIsModalVisible(false);
   }, []);
 
   const handleCancel = React.useCallback(() => {
+    history.push("/repos");
     setIsModalVisible(false);
-  }, []);
+  }, [history]);
 
   React.useEffect(() => {
     setIsModalVisible(true);
