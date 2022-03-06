@@ -8,7 +8,7 @@ import RepoTile from "@components/RepoTile/RepoTile";
 import styles from "@components/SearchForm/SearchForm.module.scss";
 import { normalizeReposCollection } from "@utils/collection";
 import { Meta } from "@utils/meta";
-import { Space } from "antd";
+import { Space, Button } from "antd";
 import { observer } from "mobx-react-lite";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { Link } from "react-router-dom";
@@ -45,9 +45,16 @@ const Repos: React.FC = () => {
           )}
           <Space direction="vertical">
             {repoContext.gitHubStore.repos.map((repo) => (
-              <Link to={`/repos/${repo.owner.login}/${repo.name}`}>
-                <RepoTile key={repo.id} item={repo} />
-              </Link>
+              <>
+                <Link to={`/repos/${repo.owner.login}/${repo.name}`}>
+                  <RepoTile key={repo.id} item={repo} />
+                </Link>
+                <Link to={`/repos/${repo.id}`}>
+                  <Button type="dashed" block>
+                    Details
+                  </Button>
+                </Link>
+              </>
             ))}
           </Space>
         </CardBlock>

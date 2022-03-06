@@ -1,6 +1,7 @@
 import * as React from "react";
 import { createContext, useContext } from "react";
 
+import RepoItem from "@components/RepoItem";
 import Repos from "@components/Repos";
 import SearchForm from "@components/SearchForm";
 import RepoBranchesDrawer from "@pages/RepoBranchesDrawer";
@@ -47,6 +48,7 @@ const App: React.FC = () => {
             <Repos />
           </Route>
           <Route path="/repos/:owner/:repo" component={RepoBranchesDrawer} />
+          <Route path="/repos/:id" component={RepoItem} />
           <Redirect to="/repos" />
         </Switch>
       </BrowserRouter>

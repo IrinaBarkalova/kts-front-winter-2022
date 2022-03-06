@@ -12,11 +12,11 @@ const getDate = (date: Date): customDateType => {
   return { d: day, m: month, y: year };
 };
 
-export const formatDate = (date: Date): string => {
+export const formatDate = (date: Date, str: string): string => {
   const { d, m, y } = getDate(date);
   if (d < 10 && m < 10) return `${"Updated "}${"0" + d}.${"0" + m}.${y}`;
   if (d < 10 && m >= 10) return `${"Updated "}${"0" + d}.${m}.${y}`;
   if (d >= 10 && m < 10) return `${"Updated "}${d}.${"0" + m}.${y}`;
 
-  return `${"Updated "}${d}.${m}.${y}`;
+  return `${str}${d}.${m}.${y}`;
 };
