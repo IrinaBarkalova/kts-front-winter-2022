@@ -25,7 +25,7 @@ import {
 import { IGitHubStore, GetOrganizationReposListParams } from "./types";
 type PrivateFields = "_repos" | "_meta" | "_value";
 export default class ReposListStore implements IGitHubStore, ILocalStore {
-  private apiStore = rootStore.api_store;
+  private apiStore = rootStore.apiStore;
   private _repos: CollectionT<number, GithubRepoModel> =
     getInitialCollectionModel();
   private _meta: Meta = Meta.initial;

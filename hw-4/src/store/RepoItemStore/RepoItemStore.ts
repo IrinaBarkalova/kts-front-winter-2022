@@ -21,7 +21,7 @@ type PrivateFields = "_user" | "_meta";
 
 export default class RepoItemStore implements IDrawerStore, ILocalStore {
   private _meta: Meta = Meta.initial;
-  private _user: User = InitialUser;
+  private _user: User = InitialUser();
 
   constructor() {
     makeObservable<RepoItemStore, PrivateFields>(this, {
@@ -34,8 +34,6 @@ export default class RepoItemStore implements IDrawerStore, ILocalStore {
   }
 
   get user(): User {
-    // eslint-disable-next-line no-console
-    console.log(this._user);
     return this._user;
   }
 
@@ -47,7 +45,7 @@ export default class RepoItemStore implements IDrawerStore, ILocalStore {
     params: GetOrganizationDrawerListParams
   ): Promise<void> {
     this._meta = Meta.loading;
-    this._user = InitialUser;
+    this._user = InitialUser();
     const result = await axios(apiUrls.github.repoItem(params.userId.id));
     runInAction(() => {
       if (result.status === 404) {
@@ -56,6 +54,7 @@ export default class RepoItemStore implements IDrawerStore, ILocalStore {
       try {
         this._meta = Meta.success;
         this._user = normalizeDrawerModel(result.data);
+        //TODO delete log
         // eslint-disable-next-line no-console
         console.log(this._user);
         return;
@@ -63,13 +62,13 @@ export default class RepoItemStore implements IDrawerStore, ILocalStore {
         // eslint-disable-next-line no-console
         console.log(e);
         this._meta = Meta.error;
-        this._user = InitialUser;
+        this._user = InitialUser();
       }
     });
   }
 
   destroy(): void {
-    this._user = InitialUser;
+    this._user = InitialUser();
     this._meta = Meta.initial;
   }
 }

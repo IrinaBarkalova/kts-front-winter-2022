@@ -14,11 +14,11 @@ export default class ApiStore implements IApiStore {
   async request<SuccessT, ErrorT = any, ReqT = {}>(
     params: RequestParams<ReqT>
   ): Promise<ApiResponse<CollectionT<number, GithubRepoModel>>> {
-    let query =
+    const query =
       params.method === HTTPMethod.GET
         ? "?" + qs.stringify(params.params) + qs.stringify(params.data)
         : "";
-    let req: RequestInit = {};
+    const req: RequestInit = {};
     if (params.method === HTTPMethod.POST) {
       req.body = JSON.stringify(params.data);
       req.headers = {
@@ -27,7 +27,7 @@ export default class ApiStore implements IApiStore {
       };
     }
 
-    let url = this.baseUrl + params.endpoint + query;
+    const url = this.baseUrl + params.endpoint + query;
 
     try {
       const response = await fetch(url, req);

@@ -20,12 +20,12 @@ export type UserApi = {
   created_at: Date;
   language: string;
 };
-export const InitialUser = {
+export const InitialUser = (): User => ({
   Name: "",
   Description: "",
   createdAt: new Date(),
   Language: "",
-};
+});
 export const normalizeDrawerModel = (raw: UserApi): User => ({
   Name: raw.name,
   Description: raw.description,
