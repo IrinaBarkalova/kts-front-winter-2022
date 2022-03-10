@@ -70,7 +70,7 @@ export default class ReposListStore implements IGitHubStore, ILocalStore {
       endpoint: `orgs/${params.organizationName}/repos`,
       headers: { accept: "application/vnd.repos.v3+json" },
       params: {
-        per_page: 8,
+        per_page: 20,
         page: params.page,
       },
       data: {},
@@ -81,7 +81,7 @@ export default class ReposListStore implements IGitHubStore, ILocalStore {
       }
       try {
         this._meta = Meta.success;
-        this._repos = normalizeGithubReposToCollection(response.data);
+        this._repos = normalizeGithubReposToCollection(response.data ?? []);
         return;
       } catch (e) {
         // eslint-disable-next-line no-console

@@ -6,28 +6,41 @@ import CardBlock from "@components/Layouts";
 import Loader from "@components/loader";
 import RepoTile from "@components/RepoTile/RepoTile";
 import styles from "@components/SearchForm/SearchForm.module.scss";
+import { routing } from "@config/apiUrls";
 import { normalizeReposCollection } from "@utils/collection";
 import { Meta } from "@utils/meta";
 import { Space, Button, Alert } from "antd";
 import { autorun } from "mobx";
 import { observer } from "mobx-react-lite";
+import * as queryString from "query-string";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Repos: React.FC = () => {
   const repoContext = useReposContext();
   const [page, setPage] = React.useState(2);
   const onClose = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {};
-  // TOdo вынести в стор getNextRepos
+  const history = useHistory();
+  //TODO rewrit in store
+  React.useEffect(() => {
+    if (repoContext.gitHubStore.value) {
+      history.push({
+        pathname: "/repos",
+        search: `?searchStr=${repoContext.gitHubStore.value}`,
+      });
+    }
+  }, [repoContext, history]);
+
   React.useEffect(
     autorun(() => {
-      repoContext
-        .getNextRepos(repoContext.gitHubStore.value, page, 8)
-        .then((result) => {
-          repoContext.gitHubStore.repos.push(
-            ...normalizeReposCollection(result.data)
-          );
-        });
+      const parsed = queryString.parse(history.location.search.substr(1));
+      let value = repoContext.gitHubStore.value;
+      if (!!parsed.searchStr) value = String(parsed.search);
+      repoContext.getNextRepos(value, page, 20).then((result) => {
+        repoContext.gitHubStore.repos.push(
+          ...normalizeReposCollection(result.data)
+        );
+      });
     }),
     [repoContext, page]
   );
@@ -61,11 +74,13 @@ const Repos: React.FC = () => {
           <Space direction="vertical">
             {repoContext.gitHubStore.repos.map((repo) => (
               <>
-                {/*TODO вынести формир урлов в конфиг*/}
-                <Link to={`/repos/${repo.owner.login}/${repo.name}`}>
+                {/*TODO TEST IT!!!*/}
+                {/*<Link to={`/repos/${repo.owner.login}/${repo.name}`}>*/}
+                <Link to={routing.urls.repoTile(repo.owner.login, repo.name)}>
                   <RepoTile key={repo.id} item={repo} />
                 </Link>
-                <Link to={`/repos/${repo.id}`}>
+                {/*<Link to={`/repos/${repo.id}`}>*/}
+                <Link to={routing.urls.details(repo.id)}>
                   <Button type="dashed" block>
                     Details
                   </Button>

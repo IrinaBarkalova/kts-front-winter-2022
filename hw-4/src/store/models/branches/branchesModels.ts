@@ -38,8 +38,8 @@ export const normalizeOrgBranchesToCollection = (
   rawList: GithubRepoBranchesApiModel[]
 ): CollectionT<string, GithubRepoBranchesModel> => {
   return {
-    order: rawList.map((item) => item.name),
-    entities: rawList.reduce(
+    order: rawList?.map((item) => item.name),
+    entities: rawList?.reduce(
       (acc, item) => ({
         ...acc,
         [item.name]: normalizeOrgBranchesModel(item),

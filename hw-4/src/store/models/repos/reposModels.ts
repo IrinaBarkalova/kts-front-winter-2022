@@ -57,8 +57,8 @@ export const normalizeGithubReposToCollection = (
   rawList: GithubRepoApiModel[]
 ): CollectionT<number, GithubRepoModel> => {
   return {
-    order: rawList.map((item) => item.id),
-    entities: rawList.reduce(
+    order: rawList?.map((item) => item.id),
+    entities: rawList?.reduce(
       (acc, item) => ({
         ...acc,
         [item.id]: normalizeGithubRepoModel(item),

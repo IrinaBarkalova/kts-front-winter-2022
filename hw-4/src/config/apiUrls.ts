@@ -10,3 +10,11 @@ export const apiUrls = {
       githubApi(`orgs/${inputStr}/repos?per_page=${per_page}&page=${page}`),
   },
 };
+
+export const routing = {
+  urls: {
+    repoTile: (login: string, name: string): string =>
+      `/repos/${login}/${name}`,
+    details: (id: number): string => `/repos/${id}`,
+  },
+};

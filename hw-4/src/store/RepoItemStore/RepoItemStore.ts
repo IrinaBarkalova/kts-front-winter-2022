@@ -54,9 +54,6 @@ export default class RepoItemStore implements IDrawerStore, ILocalStore {
       try {
         this._meta = Meta.success;
         this._user = normalizeDrawerModel(result.data);
-        //TODO delete log
-        // eslint-disable-next-line no-console
-        console.log(this._user);
         return;
       } catch (e) {
         // eslint-disable-next-line no-console

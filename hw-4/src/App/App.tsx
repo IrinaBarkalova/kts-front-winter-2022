@@ -6,6 +6,10 @@ import Repos from "@components/Repos";
 import SearchForm from "@components/SearchForm";
 import RepoBranchesDrawer from "@pages/RepoBranchesDrawer";
 import { getNextRepos } from "@store/GitHubNewReposLoader/reposLoader";
+import {
+  queryParamsStore,
+  QueryParamsStore,
+} from "@store/QueryParamsStore/QueryParamsStore";
 import ReposBranchesStore from "@store/ReposBranchesStore";
 import ReposListStore from "@store/ReposListStore";
 import { ApiResp } from "@utils/apiTypes";
@@ -20,6 +24,7 @@ interface ContextType {
     page: number,
     per_page: number
   ) => Promise<ApiResp>;
+  queryStore: QueryParamsStore;
 }
 const ReposContext = createContext({} as ContextType);
 export const useReposContext = () => useContext(ReposContext);
@@ -29,13 +34,14 @@ const Provider = ReposContext.Provider;
 const App: React.FC = () => {
   const gitHubStore = useLocalStore(() => new ReposListStore());
   const branchesStore = useLocalStore(() => new ReposBranchesStore());
-
+  const queryStore = queryParamsStore;
   return (
     <Provider
       value={{
         branchesStore,
         gitHubStore,
         getNextRepos,
+        queryStore,
       }}
     >
       <BrowserRouter>

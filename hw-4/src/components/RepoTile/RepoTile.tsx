@@ -38,7 +38,6 @@ const RepoTile: React.FC<Props> = ({ item, loading = false }: Props) => {
                 <div className={styles.star_num_data}>
                   <StarIcon color="none" />
                   <p className={styles.star_num}> {item.stargazersCount}</p>
-                  {/*TODO вынести в стор*/}
                   {formatDate(item.updatedAt, "Updated")}
                 </div>
               </React.Fragment>
