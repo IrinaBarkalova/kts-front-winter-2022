@@ -13,16 +13,18 @@ const RepoBranchesDrawer: React.FC = () => {
   const { owner, repo } = useParams<{ owner: string; repo: string }>();
   const [isModalVisible, setIsModalVisible] = React.useState(false);
   const onClose = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {};
-
   let history = useHistory();
   const handleOk = React.useCallback(() => {
     setIsModalVisible(false);
   }, []);
 
   const handleCancel = React.useCallback(() => {
-    history.push("/repos");
+    history.push({
+      pathname: "/repos",
+      search: `?searchStr=${repoContext.gitHubStore.value}`,
+    });
     setIsModalVisible(false);
-  }, [history]);
+  }, [repoContext.gitHubStore, history]);
 
   React.useEffect(() => {
     setIsModalVisible(true);

@@ -84,8 +84,6 @@ export default class ReposListStore implements IGitHubStore, ILocalStore {
         this._repos = normalizeGithubReposToCollection(response.data ?? []);
         return;
       } catch (e) {
-        // eslint-disable-next-line no-console
-        console.log(e);
         this._meta = Meta.error;
         this._repos = getInitialCollectionModel();
       }

@@ -4,9 +4,6 @@ export type CollectionT<Uid extends number | string, T> = {
   order: Uid[];
   entities: Record<Uid, T>;
 };
-export const normalizeCollectionT = <Uid extends string | number, T>(
-  collection: CollectionT<Uid, T>
-): T[] => collection.order.map((uid) => collection.entities[uid]);
 
 type GithubRepoModel = {
   id: number;
@@ -31,4 +28,4 @@ export const getInitialCollectionModel = (): CollectionT<any, any> => ({
 
 export const linearizeCollection = <Uid extends string | number, T>(
   elements: CollectionT<Uid, T>
-): T[] => elements.order.map((el) => elements.entities[el]);
+): T[] => elements.order?.map((el) => elements.entities[el]);

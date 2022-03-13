@@ -10,40 +10,28 @@ import { routing } from "@config/apiUrls";
 import { normalizeReposCollection } from "@utils/collection";
 import { Meta } from "@utils/meta";
 import { Space, Button, Alert } from "antd";
-import { autorun } from "mobx";
 import { observer } from "mobx-react-lite";
-import * as queryString from "query-string";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Repos: React.FC = () => {
   const repoContext = useReposContext();
   const [page, setPage] = React.useState(2);
   const onClose = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {};
-  const history = useHistory();
-  //TODO rewrit in store
-  React.useEffect(() => {
-    if (repoContext.gitHubStore.value) {
-      history.push({
-        pathname: "/repos",
-        search: `?searchStr=${repoContext.gitHubStore.value}`,
-      });
-    }
-  }, [repoContext, history]);
+  const location = useLocation();
 
-  React.useEffect(
-    autorun(() => {
-      const parsed = queryString.parse(history.location.search.substr(1));
-      let value = repoContext.gitHubStore.value;
-      if (!!parsed.searchStr) value = String(parsed.search);
-      repoContext.getNextRepos(value, page, 20).then((result) => {
+  React.useEffect(() => {
+    let Value = repoContext.gitHubStore.value;
+    repoContext.queryStore.update(location);
+    if (!!repoContext.queryStore.value) Value = repoContext.queryStore.value;
+    if (Value) {
+      repoContext.getNextRepos(Value, page, 20).then((result) => {
         repoContext.gitHubStore.repos.push(
           ...normalizeReposCollection(result.data)
         );
       });
-    }),
-    [repoContext, page]
-  );
+    }
+  }, [repoContext, page, location]);
 
   const nextPage = React.useCallback(() => {
     setPage((page) => page + 1);
@@ -74,12 +62,9 @@ const Repos: React.FC = () => {
           <Space direction="vertical">
             {repoContext.gitHubStore.repos.map((repo) => (
               <>
-                {/*TODO TEST IT!!!*/}
-                {/*<Link to={`/repos/${repo.owner.login}/${repo.name}`}>*/}
                 <Link to={routing.urls.repoTile(repo.owner.login, repo.name)}>
                   <RepoTile key={repo.id} item={repo} />
                 </Link>
-                {/*<Link to={`/repos/${repo.id}`}>*/}
                 <Link to={routing.urls.details(repo.id)}>
                   <Button type="dashed" block>
                     Details

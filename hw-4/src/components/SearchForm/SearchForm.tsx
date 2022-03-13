@@ -9,7 +9,6 @@ import { observer } from "mobx-react-lite";
 
 const SearchForm: React.FC = () => {
   const repoContext = useReposContext();
-
   return (
     <div className={styles.search_form}>
       <SearchInput
