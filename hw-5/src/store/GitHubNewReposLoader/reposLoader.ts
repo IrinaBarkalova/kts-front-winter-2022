@@ -1,6 +1,6 @@
-import { apiUrls } from "@config/apiUrls";
-import { normalizeGithubReposToCollection } from "@store/models/repos";
-import { ApiResp } from "@utils/apiTypes";
+import { apiUrls } from "config/apiUrls";
+import { normalizeGithubReposToCollection } from "store/models/repos";
+import { ApiResp } from "utils/apiTypes";
 import axios from "axios";
 
 export const getNextRepos = async (

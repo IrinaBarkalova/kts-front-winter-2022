@@ -1,4 +1,4 @@
-import { CollectionT } from "@utils/collection";
+import { CollectionT } from "utils/collection";
 export type GithubOwnerModel = {
   id: number;
   login: string;

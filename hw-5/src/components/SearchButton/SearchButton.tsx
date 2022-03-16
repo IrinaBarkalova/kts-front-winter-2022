@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { useReposContext } from "@App/App";
+import { useReposContext } from "App/App";
 import { Link, useLocation } from "react-router-dom";
 
 type Props = {

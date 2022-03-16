@@ -1,19 +1,19 @@
-import { apiUrls } from "@config/apiUrls";
+import { apiUrls } from "config/apiUrls";
 import {
   GithubRepoBranchesModel,
   normalizeOrgBranchesToCollection,
-} from "@store/models/branches";
+} from "store/models/branches";
 import {
   GetOrgBranchesParams,
   IBranchesStore,
-} from "@store/ReposBranchesStore/types";
+} from "store/ReposBranchesStore/types";
 import {
   CollectionT,
   getInitialCollectionModel,
   linearizeCollection,
-} from "@utils/collection";
-import { Meta } from "@utils/meta";
-import { ILocalStore } from "@utils/useLocalStore";
+} from "utils/collection";
+import { Meta } from "utils/meta";
+import { ILocalStore } from "utils/useLocalStore";
 import axios from "axios";
 import {
   action,

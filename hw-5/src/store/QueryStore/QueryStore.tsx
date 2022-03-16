@@ -1,4 +1,4 @@
-import { ILocalStore } from "@utils/useLocalStore";
+import { ILocalStore } from "utils/useLocalStore";
 import * as H from "history";
 import { action, computed, makeObservable, observable } from "mobx";
 import * as queryString from "query-string";

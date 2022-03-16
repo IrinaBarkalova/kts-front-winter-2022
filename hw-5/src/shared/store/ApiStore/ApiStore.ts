@@ -1,5 +1,5 @@
-import { GithubRepoModel } from "@store/models/repos";
-import { CollectionT } from "@utils/collection";
+import { GithubRepoModel } from "store/models/repos";
+import { CollectionT } from "utils/collection";
 import * as qs from "qs";
 
 import { ApiResponse, HTTPMethod, IApiStore, RequestParams } from "./types";

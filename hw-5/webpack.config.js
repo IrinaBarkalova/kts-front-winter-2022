@@ -20,7 +20,19 @@ const getSettingsForStyles=(withModules=false)=>{
                     localIdentName: !isProd ? "[path][name]__[local]" : "[hash:base64]"
                 }
             }
-        },{
+        },
+        // {
+        //     loader: 'css-loader',
+        //     options: {
+        //         sourceMap: true,
+        //         modules: withModules
+        //             ? {
+        //                 localIdentName: !isProd ? "[path][name]__[local]" : "[hash:base64]"
+        //             }
+        //             : undefined,
+        //     },
+        // },
+        {
             loader: "postcss-loader",
             options: {
                 postcssOptions:{
@@ -79,14 +91,14 @@ module.exports={
     resolve: {
         extensions: [".ts",".tsx",".js",".jsx"],
         alias: {
-            App: path.join(srcPath,"@App"),
-            components: path.join(srcPath, "@components"),
-            config: path.join(srcPath,"@config"),
-            styles: path.join(srcPath, "@styles"),
-            utils: path.join(srcPath,"@utils"),
-            store:path.join(srcPath,"@store"),
-            shared:path.join(srcPath,"@shared"),
-            pages:path.join(srcPath,"@App/pages")
+            App: path.join(srcPath,"App"),
+            components: path.join(srcPath, "components"),
+            config: path.join(srcPath,"config"),
+            styles: path.join(srcPath, "styles"),
+            utils: path.join(srcPath,"utils"),
+            store:path.join(srcPath,"store"),
+            shared:path.join(srcPath,"shared"),
+            pages:path.join(srcPath,"./pages")
         }
     },
     devServer:{

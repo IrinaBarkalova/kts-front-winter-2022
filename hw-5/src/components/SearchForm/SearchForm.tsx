@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import { useReposContext } from "@App/App";
-import SearchButton from "@components/SearchButton";
-import styles from "@components/SearchForm/SearchForm.module.scss";
-import SearchIcon from "@components/SearchIcon";
-import SearchInput from "@components/SearchInput";
+import { useReposContext } from "App/App";
+import SearchButton from "components/SearchButton";
+import styles from "components/SearchForm/SearchForm.module.scss";
+import SearchIcon from "components/SearchIcon";
+import SearchInput from "components/SearchInput";
 import { observer } from "mobx-react-lite";
 
 const SearchForm: React.FC = () => {

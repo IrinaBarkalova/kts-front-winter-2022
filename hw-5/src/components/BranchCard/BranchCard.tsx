@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import styles from "@components/BranchCard/BranchCard.module.scss";
-import { GithubRepoBranchesModel } from "@store/models/branches";
+import styles from "components/BranchCard/BranchCard.module.scss";
+import { GithubRepoBranchesModel } from "store/models/branches";
 import { Collapse } from "antd";
 
 type Props = {

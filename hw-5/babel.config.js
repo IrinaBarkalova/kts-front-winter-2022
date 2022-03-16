@@ -9,7 +9,7 @@ module.exports=api=>{
     ];
     const plugins = [
         "@babel/plugin-proposal-optional-chaining",
-        process.env.NODE_ENV === "development" && "react-refresh/babel"
+        process.env.NODE_ENV === 'development' && 'react-refresh/babel'
     ].filter(Boolean);
     return{
         presets,

@@ -1,4 +1,4 @@
-import { GithubOwnerModel } from "@store/models/repos";
+import { GithubOwnerModel } from "store/models/repos";
 
 export type CollectionT<Uid extends number | string, T> = {
   order: Uid[];

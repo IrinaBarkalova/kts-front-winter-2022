@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import styles from "@components/RepoTile/RepoTile.module.scss";
+import styles from "components/RepoTile/RepoTile.module.scss";
 type Props = {
   color: string;
 };

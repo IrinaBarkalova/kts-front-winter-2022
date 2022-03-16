@@ -1,19 +1,19 @@
 import React from "react";
 
-import { HTTPMethod } from "@shared/store/ApiStore/types";
-import rootStore from "@shared/store/rootStore";
+import { HTTPMethod } from "shared/store/ApiStore/types";
+import rootStore from "shared/store/rootStore";
 import {
   GithubRepoApiModel,
   GithubRepoModel,
   normalizeGithubReposToCollection,
-} from "@store/models/repos/reposModels";
+} from "store/models/repos/reposModels";
 import {
   CollectionT,
   getInitialCollectionModel,
   linearizeCollection,
-} from "@utils/collection";
-import { Meta } from "@utils/meta";
-import { ILocalStore } from "@utils/useLocalStore";
+} from "utils/collection";
+import { Meta } from "utils/meta";
+import { ILocalStore } from "utils/useLocalStore";
 import {
   action,
   computed,

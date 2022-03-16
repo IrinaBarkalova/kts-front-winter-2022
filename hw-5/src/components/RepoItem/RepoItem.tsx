@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import styles from "@components/RepoItem/RepoItem.module.scss";
-import RepoItemStore from "@store/RepoItemStore";
-import { formatDate } from "@utils/formatDate";
-import { Meta } from "@utils/meta";
-import { useLocalStore } from "@utils/useLocalStore";
+import styles from "components/RepoItem/RepoItem.module.scss";
+import RepoItemStore from "store/RepoItemStore";
+import { formatDate } from "utils/formatDate";
+import { Meta } from "utils/meta";
+import { useLocalStore } from "utils/useLocalStore";
 import { Alert, Card } from "antd";
 import { observer } from "mobx-react-lite";
 import { useParams } from "react-router-dom";

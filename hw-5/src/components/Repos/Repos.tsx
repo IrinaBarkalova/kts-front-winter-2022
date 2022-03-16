@@ -1,14 +1,14 @@
 import * as React from "react";
 
-import { useReposContext } from "@App/App";
-import EndMessage from "@components/EndMessage";
-import CardBlock from "@components/Layouts";
-import Loader from "@components/loader";
-import RepoTile from "@components/RepoTile/RepoTile";
-import styles from "@components/SearchForm/SearchForm.module.scss";
-import { routing } from "@config/apiUrls";
-import { normalizeReposCollection } from "@utils/collection";
-import { Meta } from "@utils/meta";
+import { useReposContext } from "App/App";
+import EndMessage from "components/EndMessage";
+import CardBlock from "components/Layouts";
+import Loader from "components/loader";
+import RepoTile from "components/RepoTile/RepoTile";
+import styles from "components/SearchForm/SearchForm.module.scss";
+import { routing } from "config/apiUrls";
+import { normalizeReposCollection } from "utils/collection";
+import { Meta } from "utils/meta";
 import { Space, Button, Alert } from "antd";
 import { observer } from "mobx-react-lite";
 import InfiniteScroll from "react-infinite-scroll-component";

@@ -1,9 +1,9 @@
 import * as React from "react";
 
-import { useReposContext } from "@App/App";
-import BranchCard from "@components/BranchCard";
-import styles from "@components/BranchCard/BranchCard.module.scss";
-import { Meta } from "@utils/meta";
+import { useReposContext } from "App/App";
+import BranchCard from "components/BranchCard";
+import styles from "components/BranchCard/BranchCard.module.scss";
+import { Meta } from "utils/meta";
 import { Space, Modal, Alert } from "antd";
 import { observer } from "mobx-react-lite";
 import { useHistory, useParams } from "react-router-dom";

@@ -1,6 +1,6 @@
-import { GithubRepoBranchesModel } from "@store/models/branches";
-import { GithubRepoModel } from "@store/models/repos";
-import { CollectionT } from "@utils/collection";
+import { GithubRepoBranchesModel } from "store/models/branches";
+import { GithubRepoModel } from "store/models/repos";
+import { CollectionT } from "utils/collection";
 
 export type ApiResp<
   SuccessData =

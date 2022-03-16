@@ -1,13 +1,13 @@
-import { apiUrls } from "@config/apiUrls";
+import { apiUrls } from "config/apiUrls";
 import {
   GetOrganizationDrawerListParams,
   IDrawerStore,
   InitialUser,
   normalizeDrawerModel,
   User,
-} from "@store/RepoItemStore/types";
-import { Meta } from "@utils/meta";
-import { ILocalStore } from "@utils/useLocalStore";
+} from "store/RepoItemStore/types";
+import { Meta } from "utils/meta";
+import { ILocalStore } from "utils/useLocalStore";
 import axios from "axios";
 import {
   action,

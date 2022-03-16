@@ -1,6 +1,6 @@
 // Перечисление методов HTTP-запроса
-import { GithubRepoModel } from "@store/models/repos";
-import { CollectionT } from "@utils/collection";
+import { GithubRepoModel } from "store/models/repos";
+import { CollectionT } from "utils/collection";
 
 export enum HTTPMethod {
   GET = "GET",

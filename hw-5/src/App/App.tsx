@@ -1,16 +1,16 @@
 import * as React from "react";
 import { createContext, useContext } from "react";
 
-import RepoItem from "@components/RepoItem";
-import Repos from "@components/Repos";
-import SearchForm from "@components/SearchForm";
-import RepoBranchesDrawer from "@pages/RepoBranchesDrawer";
-import { getNextRepos } from "@store/GitHubNewReposLoader/reposLoader";
-import { QueryStore } from "@store/QueryStore/QueryStore";
-import ReposBranchesStore from "@store/ReposBranchesStore";
-import ReposListStore from "@store/ReposListStore";
-import { ApiResp } from "@utils/apiTypes";
-import { useLocalStore } from "@utils/useLocalStore";
+import RepoItem from "components/RepoItem";
+import Repos from "components/Repos";
+import SearchForm from "components/SearchForm";
+import RepoBranchesDrawer from "./pages/RepoBranchesDrawer";
+import { getNextRepos } from "store/GitHubNewReposLoader/reposLoader";
+import { QueryStore } from "store/QueryStore/QueryStore";
+import ReposBranchesStore from "store/ReposBranchesStore";
+import ReposListStore from "store/ReposListStore";
+import { ApiResp } from "utils/apiTypes";
+import { useLocalStore } from "utils/useLocalStore";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom"
 
 interface ContextType {

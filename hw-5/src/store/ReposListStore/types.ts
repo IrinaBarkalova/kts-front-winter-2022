@@ -1,6 +1,6 @@
 // Параметры запроса
 
-import { GithubRepoModel } from "@store/models/repos";
+import { GithubRepoModel } from "store/models/repos";
 
 export type GetOrganizationReposListParams = {
   organizationName?: string;

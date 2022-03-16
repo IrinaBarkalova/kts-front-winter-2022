@@ -1,10 +1,10 @@
 import * as React from "react";
 
-import AvatarIcon from "@components/AvatarIcon";
-import styles from "@components/RepoTile/RepoTile.module.scss";
-import StarIcon from "@components/StarIcon";
-import { GithubRepoModel } from "@store/models/repos";
-import { formatDate } from "@utils/formatDate";
+import AvatarIcon from "components/AvatarIcon";
+import styles from "components/RepoTile/RepoTile.module.scss";
+import StarIcon from "components/StarIcon";
+import { GithubRepoModel } from "store/models/repos";
+import { formatDate } from "utils/formatDate";
 import { Card, Skeleton } from "antd";
 type Props = {
   item?: GithubRepoModel;
