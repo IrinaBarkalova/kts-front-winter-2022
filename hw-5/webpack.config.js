@@ -21,17 +21,6 @@ const getSettingsForStyles=(withModules=false)=>{
                 }
             }
         },
-        // {
-        //     loader: 'css-loader',
-        //     options: {
-        //         sourceMap: true,
-        //         modules: withModules
-        //             ? {
-        //                 localIdentName: !isProd ? "[path][name]__[local]" : "[hash:base64]"
-        //             }
-        //             : undefined,
-        //     },
-        // },
         {
             loader: "postcss-loader",
             options: {
