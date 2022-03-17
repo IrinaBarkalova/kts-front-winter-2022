@@ -1,0 +1,47 @@
+@import "../../styles/variables";
+
+.repoCards{
+    @include flex(none, center);
+    align-content: center;
+    margin-top: 10px;
+}
+.fullForm{
+    @include flex(column, center);
+}
+.search_form{
+    @include flex(row, center);
+    margin-top: 20px;
+    &__btn{
+        @include square(50px);
+        background: $--main-serch-btn-input-color;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-left: 27px ;
+    }
+
+    &__input{
+    width: 460px;
+    height: 50px;
+    background: $--main-bg-color;
+
+    border: 1px solid $--main-border-color;
+    border-radius: 6px;
+    padding-left: 12px;
+    cursor: pointer;
+    }
+}
+
+.search_form__input:hover{
+    border: 1px solid $--main-serch-btn-input-color;
+}
+.search_form__input:disabled{
+    background: $--serch-input-disable-color;
+    border: 1px solid $--main-border-color;
+}
+
+.search_form__btn:hover{
+    background: $--serch-input-hover-color;
+}
+.search_form__btn:disabled{
+    background: $--main-border-color;
+}
