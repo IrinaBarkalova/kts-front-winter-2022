@@ -14,10 +14,6 @@ const RepoBranchesDrawer: React.FC = () => {
   const [isModalVisible, setIsModalVisible] = React.useState(false);
   const onClose = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {};
   let history = useHistory();
-  const handleOk = React.useCallback(() => {
-    setIsModalVisible(false);
-  }, []);
-
   const handleCancel = React.useCallback(() => {
     history.push({
       pathname: "/repos",
@@ -35,7 +31,7 @@ const RepoBranchesDrawer: React.FC = () => {
       title="Branches"
       closable={false}
       visible={isModalVisible}
-      onOk={handleOk}
+      onOk={handleCancel}
       onCancel={handleCancel}
     >
       {repoContext.branchesStore.meta === Meta.error && (
