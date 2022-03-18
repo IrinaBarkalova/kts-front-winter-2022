@@ -1,0 +1,46 @@
+@import "src/styles/variables";
+
+.repo_href{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: $--repo-href-color;
+    margin-bottom: 4px;
+}
+.repo_href:hover{
+    color: $--repo-href-hover-color;
+}
+
+.card_block{
+    @include square(auto);
+    background: $--main-bg-color;
+    border: 1px solid $--main-border-color;
+    border-radius: 6px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.card_block:hover{
+    box-shadow: 0 2px 6px $--repo-href-color;
+}
+
+.avatar__icon{
+    width: 80px;
+    border-radius: 50%;
+    margin-left: 11px;
+    margin-top: 4px;
+}
+
+.star_num{
+    margin-right: 20px;
+    &_img{
+        margin-top: 1px;
+        margin-right: 4px;
+    }
+    &_data{
+        @include flex(row, none);
+    }
+}
