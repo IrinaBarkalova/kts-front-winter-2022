@@ -38,10 +38,17 @@ const RepoItem: React.FC = () => {
         title={itemStore.user?.Name}
         bordered={false}
         className={styles.card}
-        headStyle={{ fontSize: 50, fontWeight: 300 }}
+        headStyle={{
+          fontSize: 40,
+          fontWeight: 300,
+        }}
       >
-        <p>Description: {itemStore.user.Description}</p>
-        <p>Using language: {itemStore.user.Language}</p>
+        {itemStore.user.Description && (
+          <p>Description: {itemStore.user.Description}</p>
+        )}
+        {itemStore.user.Language && (
+          <p>Using language: {itemStore.user.Language}</p>
+        )}
         <p> {formatDate(itemStore.user.createdAt, "Created")}</p>
       </Card>
     </div>

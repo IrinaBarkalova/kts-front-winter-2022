@@ -45,3 +45,18 @@
 .search_form__btn:disabled{
     background: $--main-border-color;
 }
+@media only screen and (max-width: 600px) {
+    .search_form{
+       &__input{
+            width: 350px;
+        }
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .search_form{
+        &__input{
+            width: 320px;
+        }
+    }
+}
