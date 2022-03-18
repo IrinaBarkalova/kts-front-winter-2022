@@ -1,5 +1,7 @@
 import * as React from "react";
 
+import { useReposContext } from "@App/App";
+
 type Props = {
   className: string;
   value?: string | number;
@@ -13,6 +15,19 @@ const SearchInput: React.FC<Props> = ({
   onChange,
   placeholder,
 }: Props) => {
+  const repoContext = useReposContext();
+  const keyPress = React.useCallback(
+    (e: any) => {
+      if (repoContext.gitHubStore.value && e.key === "Enter") {
+        repoContext.queryStore.setHistory();
+        repoContext.gitHubStore.getOrganizationReposList({
+          organizationName: repoContext.gitHubStore.value,
+          page: 1,
+        });
+      }
+    },
+    [repoContext]
+  );
   return (
     <input
       type="text"
@@ -20,6 +35,7 @@ const SearchInput: React.FC<Props> = ({
       placeholder={placeholder}
       value={value}
       onChange={onChange}
+      onKeyPress={keyPress}
     />
   );
 };
